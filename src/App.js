@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-modal/lib/components/Modal';
+import React, { Component, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Form from './Form'
+import './App.css'
 
-function App() {
+
+
+function App () {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <button onClick={() => setModalIsOpen(true)}>Click Here To Enter</button>
+      <img src='/Image1/b2.jpg'/>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: {
+            backgroundColor: 'grey'
+          },
+          content: {
+            color: 'orange'
+          }
+        }}
+        
+      >
+        
+        <div><Form/></div>
+        <div>
+          <button onClick={() => setModalIsOpen(false)}>Log In</button>
+        </div>
+      </Modal>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
